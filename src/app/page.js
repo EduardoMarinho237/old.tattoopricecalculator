@@ -45,33 +45,33 @@ export default function Home() {
 
   return (
     <main className="min-h-screen bg-gray-100 text-gray-900 flex items-center justify-center p-4 relative">
-    <button
-      className="unstyled-button absolute top-4 right-4 text-2xl"
-      onClick={() => router.push('/config')}
-      aria-label="Ir para configurações"
-    >
-      <FontAwesomeIcon icon={faGear} />
-    </button>
-
-
+      <button
+        className="unstyled-button absolute top-4 right-4 text-2xl"
+        onClick={() => router.push('/config')}
+        aria-label="Ir para configurações"
+      >
+        <FontAwesomeIcon icon={faGear} />
+      </button>
 
       <div className="bg-white rounded-lg shadow p-8 w-full max-w-xl">
         <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Preço de Tatuagem</h1>
 
         <form className="space-y-6" onSubmit={handleCalculate}>
-        <input
-          type="text"
-          inputMode="numeric"
-          pattern="[0-9]*"
-          className="w-full border rounded-full px-3 py-2"
-          value={size}
-          onChange={(e) => {
-            const val = e.target.value;
-            if (/^\d*$/.test(val)) setSize(val);
-          }}
-          required
-        />
-
+          <div>
+            <label className="block font-medium mb-1">Tamanho em cm:</label>
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="w-full border rounded-full px-3 py-2"
+              value={size}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (/^\d*$/.test(val)) setSize(val);
+              }}
+              required
+            />
+          </div>
 
           <div>
             <label className="block font-medium mb-1">Coloração:</label>
