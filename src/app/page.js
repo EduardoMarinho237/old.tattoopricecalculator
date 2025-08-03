@@ -46,7 +46,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-gray-100 text-gray-900 flex items-center justify-center p-4 relative">
       <button
-        className="unstyled-button absolute top-4 right-4 text-2xl"
+        className="unstyled-button absolute top-4 right-4 text-2xl z-50"
         onClick={() => router.push('/config')}
         aria-label="Ir para configurações"
       >
