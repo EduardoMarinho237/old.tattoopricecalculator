@@ -1,103 +1,155 @@
-import Image from "next/image";
+'use client';
+
+import { useState } from 'react';
+import { useRouter } from 'next/navigation';
+import { useCalculatorConfig } from '@/context/CalculatorContext';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faGear } from '@fortawesome/free-solid-svg-icons';
 
 export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              src/app/page.js
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+  const router = useRouter();
+  const { config } = useCalculatorConfig();
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
+  const [size, setSize] = useState('');
+  const [color, setColor] = useState('0');
+  const [complexity, setComplexity] = useState(1);
+  const [shading, setShading] = useState('0');
+  const [needles, setNeedles] = useState('');
+  const [result, setResult] = useState(null);
+
+  const handleCalculate = (e) => {
+    e.preventDefault();
+
+    const sizeCm = parseInt(size, 10);
+    const needleCount = parseInt(needles, 10);
+
+    if (isNaN(sizeCm) || sizeCm <= 0 || isNaN(needleCount)) {
+      alert('Informe valores válidos.');
+      return;
+    }
+
+    const basePrice = (config.pricePerCm || 80) * sizeCm;
+    const colorMultiplier = 1 + (parseInt(color) * config.colorIncrement);
+    const complexityIncrement = complexity * config.complexityIncrement;
+    const shadingIncrement = config.shadingMap[shading] || 0;
+    const needleIncrement = needleCount * config.needlePrice;
+
+    const total =
+      basePrice * colorMultiplier +
+      basePrice * shadingIncrement +
+      basePrice * complexityIncrement +
+      needleIncrement;
+
+    setResult(total.toFixed(2));
+  };
+
+  return (
+    <main className="min-h-screen bg-gray-100 text-gray-900 flex items-center justify-center p-4 relative">
+    <button
+      className="unstyled-button absolute top-4 right-4 text-2xl"
+      onClick={() => router.push('/config')}
+      aria-label="Ir para configurações"
+    >
+      <FontAwesomeIcon icon={faGear} />
+    </button>
+
+
+
+      <div className="bg-white rounded-lg shadow p-8 w-full max-w-xl">
+        <h1 className="text-2xl font-bold mb-6 text-center">Calculadora de Preço de Tatuagem</h1>
+
+        <form className="space-y-6" onSubmit={handleCalculate}>
+        <input
+          type="text"
+          inputMode="numeric"
+          pattern="[0-9]*"
+          className="w-full border rounded-full px-3 py-2"
+          value={size}
+          onChange={(e) => {
+            const val = e.target.value;
+            if (/^\d*$/.test(val)) setSize(val);
+          }}
+          required
+        />
+
+
+          <div>
+            <label className="block font-medium mb-1">Coloração:</label>
+            <div className="flex flex-col gap-1">
+              <label>
+                <input type="radio" name="color" value="0" checked={color === '0'} onChange={(e) => setColor(e.target.value)} /> Apenas preto
+              </label>
+              <label>
+                <input type="radio" name="color" value="1" checked={color === '1'} onChange={(e) => setColor(e.target.value)} /> Uma cor
+              </label>
+              <label>
+                <input type="radio" name="color" value="2" checked={color === '2'} onChange={(e) => setColor(e.target.value)} /> Duas cores
+              </label>
+              <label>
+                <input type="radio" name="color" value="3" checked={color === '3'} onChange={(e) => setColor(e.target.value)} /> Três ou mais cores
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label className="block font-medium mb-1">
+              Complexidade: <span className="font-bold">{complexity}</span>
+            </label>
+            <input
+              type="range"
+              min="1"
+              max="15"
+              value={complexity}
+              onChange={(e) => setComplexity(Number(e.target.value))}
+              className="w-full"
             />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+          </div>
+
+          <div>
+            <label className="block font-medium mb-1">Sombreamento:</label>
+            <div className="flex flex-col gap-1">
+              <label>
+                <input type="radio" name="shading" value="0" checked={shading === '0'} onChange={(e) => setShading(e.target.value)} /> Não possui
+              </label>
+              <label>
+                <input type="radio" name="shading" value="1" checked={shading === '1'} onChange={(e) => setShading(e.target.value)} /> Possui minoritariamente
+              </label>
+              <label>
+                <input type="radio" name="shading" value="2" checked={shading === '2'} onChange={(e) => setShading(e.target.value)} /> Possui majoritariamente
+              </label>
+              <label>
+                <input type="radio" name="shading" value="3" checked={shading === '3'} onChange={(e) => setShading(e.target.value)} /> Possui totalmente
+              </label>
+            </div>
+          </div>
+
+          <div>
+            <label className="block font-medium mb-1">Quantidade de agulhas:</label>
+            <input
+              type="text"
+              inputMode="numeric"
+              pattern="[0-9]*"
+              className="w-full border rounded-full px-3 py-2"
+              value={needles}
+              onChange={(e) => {
+                const val = e.target.value;
+                if (/^\d*$/.test(val)) setNeedles(val);
+              }}
+              required
+            />
+          </div>
+
+          <button type="submit" className="w-full bg-black text-white py-2 rounded-full hover:bg-gray-800">
+            Calcular
+          </button>
+        </form>
+
+        {result && (
+          <div className="mt-6 text-center">
+            <p className="text-lg font-semibold">Preço estimado: R$ {result}</p>
+          </div>
+        )}
+      </div>
+    </main>
   );
 }
