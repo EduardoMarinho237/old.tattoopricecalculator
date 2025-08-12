@@ -18,6 +18,6 @@ npm run dev
 ```
 Acesse [http://localhost:3000](http://localhost:3000) no seu browser para conseguir visualizar a aplicação.
 
-Você pode alterar à vontade em ambiente local e fazer um pull request para que eu avalie, se for conveniente, suas alterações serão mergeadas e irão ser adicionadas em produção.
+Você pode alterar à vontade em ambiente local e fazer um pull request para que eu avalie. Caso for conveniente, suas alterações serão mergeadas e irão ser adicionadas em produção.
 
-## Obrigado pela atenão, se possível deixe uma estrelinha
+## Obrigado pela atenção, se possível deixe uma estrelinha
