@@ -37,6 +37,7 @@ button {
 button:hover {
     background-color: #8a1818;
     color: #f4cfbd;
+    cursos: pointer;
 }
 
 
