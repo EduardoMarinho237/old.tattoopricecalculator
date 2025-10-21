@@ -1,5 +1,3 @@
-
-````markdown
 # 💉 Tattoo Price Calculator
 
 This is a project I created to help with tattoo pricing and standardization for my wife, who works as a tattoo artist ([@AnelizTattoo](https://www.instagram.com/AnelizTattoo)).  
