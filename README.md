@@ -1,23 +1,56 @@
-Este é um projeto que criei para auxiliar na precificação e padronização de preços de tatuagens para minha esposa que atua na área (@AnelizTattoo) usando React + Nextjs, Tailwindcss, ícones do FontAwasome, salvando alguns parâmetros no localstorage e deploy na Vercel (disponível em https://anelizpricecalculator.vercel.app), no momento ela é a única usuária ativa do projeto no seu dia a dia, no futuro pretendo melhorar o projeto para implementar mais funções, segue o tutorial para rodar ele localmente.
 
-## Clone o repositório e vá até a pasta raiz
+````markdown
+# 💉 Tattoo Price Calculator
 
-Execute no seu terminal:
+This is a project I created to help with tattoo pricing and standardization for my wife, who works as a tattoo artist ([@AnelizTattoo](https://www.instagram.com/AnelizTattoo)).  
+It was built using **React + Next.js**, **Tailwind CSS**, and **Font Awesome icons**, with some parameters saved in **localStorage**, and it’s deployed on **Vercel** at  
+👉 [https://anelizpricecalculator.vercel.app](https://anelizpricecalculator.vercel.app)
+
+Currently, she is the only active user of this app in her daily workflow.  
+In the future, I plan to improve it and implement additional features.  
+Below you’ll find instructions to run it locally.
+
+---
+
+## 🚀 Clone the repository and navigate to the root folder
+
+Run in your terminal:
 
 ```bash
 git clone https://github.com/EduardoMarinho237/TattooPriceCalculator.git
 cd TattooPriceCalculator
-```
+````
 
-## Inicie o projeto em modo desenvolvedor com npm 
+---
 
-Execute no seu terminal:
+## 💻 Start the project in development mode using npm
+
+Run:
 
 ```bash
 npm run dev
 ```
-Acesse [http://localhost:3000](http://localhost:3000) no seu browser para conseguir visualizar a aplicação.
 
-Você pode alterar à vontade em ambiente local e fazer um pull request para que eu avalie. Caso for conveniente, suas alterações serão mergeadas e irão ser adicionadas em produção.
+Then open [http://localhost:3000](http://localhost:3000) in your browser to view the app.
 
-## Obrigado pela atenção, se possível deixe uma estrelinha
+---
+
+## 🧩 Contributing
+
+Feel free to make any changes locally and open a **pull request** so I can review them.
+If appropriate, your contributions will be merged and deployed to production.
+
+---
+
+## ⭐ Thanks
+
+Thanks for stopping by!
+If you found this project useful, please consider leaving a **star** ⭐
+
+```
+
+---
+
+Quer que eu monte agora uma versão adaptada para o **novo projeto (TattooPriceManager)** com login, clientes, registros e dashboards?  
+Posso deixar o README todo profissional e bilíngue (PT/EN) se quiser.
+```
