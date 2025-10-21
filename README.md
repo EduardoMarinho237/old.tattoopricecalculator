@@ -15,8 +15,8 @@ Below you’ll find instructions to run it locally.
 Run in your terminal:
 
 ```bash
-git clone https://github.com/EduardoMarinho237/TattooPriceCalculator.git
-cd TattooPriceCalculator
+git clone https://github.com/EduardoMarinho237/old.tattoopricecalculator.git
+cd old.tattoopricecalculator
 ````
 
 ---
@@ -45,10 +45,4 @@ If appropriate, your contributions will be merged and deployed to production.
 Thanks for stopping by!
 If you found this project useful, please consider leaving a **star** ⭐
 
-```
-
----
-
-Quer que eu monte agora uma versão adaptada para o **novo projeto (TattooPriceManager)** com login, clientes, registros e dashboards?  
-Posso deixar o README todo profissional e bilíngue (PT/EN) se quiser.
 ```
