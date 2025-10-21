@@ -1,8 +1,8 @@
 # 💉 Tattoo Price Calculator
 
-This is a project I created to help with tattoo pricing and standardization for my wife, who works as a tattoo artist ([@AnelizTattoo](https://www.instagram.com/AnelizTattoo)).  
+This is a project I created to help with tattoo pricing and standardization for my wife, who works as a tattoo artist ([@AnelizTattoo](https://www.instagram.com/AnelisTattoo)).  
 It was built using **React + Next.js**, **Tailwind CSS**, and **Font Awesome icons**, with some parameters saved in **localStorage**, and it’s deployed on **Vercel** at  
-👉 [https://anelizpricecalculator.vercel.app](https://anelizpricecalculator.vercel.app)
+👉 [https://tattoopricecalculator.vercel.app](https://tattoopricecalculator.vercel.app)
 
 Currently, she is the only active user of this app in her daily workflow.  
 In the future, I plan to improve it and implement additional features.  
